@@ -1,6 +1,10 @@
 # mycobot_control
 unofficial myCobot ROS Package
 
+## Environment
+m5 atom ver2.4
+pymycobot-2.1.2 pyserial-3.5
+
 ## Slider Control
 roslaunch mycobot_control mycobot_slider_control.launch
 
