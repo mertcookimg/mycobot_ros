@@ -145,7 +145,7 @@
           <mesh filename="package://mycobot_description/meshes/stl/visual/link6.stl" />
         </geometry>
         <origin xyz="0 0 0 " rpy="0 0 0" />
-        <material name="white" />
+        <material name="green" />
       </visual>
       <collision>
         <geometry>
