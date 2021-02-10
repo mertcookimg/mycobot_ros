@@ -54,7 +54,7 @@
     <origin xyz="${mycobot_origin}" rpy="0 0 ${M_PI/2}" />
   </xacro:mycobot_robot>
 
-  <!-- <xacro:if value="$(arg gazebo_plugin)"> -->
+  <xacro:if value="$(arg gazebo_plugin)">
     <gazebo>
       <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
         <robotNamespace>$(arg robot_namespace)</robotNamespace>
@@ -62,7 +62,7 @@
         <legacyModeNS>false</legacyModeNS>
       </plugin>
     </gazebo>
-  <!-- </xacro:if> -->
+  </xacro:if>
 
   <mycobot />
 </robot>

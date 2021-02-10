@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+<robot  xmlns:xacro="http://www.ros.org/wiki/xacro" name="mycobot" >
+  <xacro:property name="width" value=".2" />
+  <xacro:include filename="$(find mycobot_description)/urdf/color.xacro" />
+
+  <link name="world"/>
+
+  <joint name="origin" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+  </joint>
+  <!-- body joint & link -->
+
+  <link name="base_link">
+    <collision>
+      <origin xyz = "0.0 0 0 " rpy = " 0 0 0"/>
+      <geometry>
+          <mesh filename="package://mycobot_description/meshes/stl/visual/link1.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz = "0.0 0 0 " rpy = " 0 0 0"/>
+      <geometry>
+          <mesh filename="package://mycobot_description/meshes/stl/visual/link1.stl" />
+      </geometry>
+      <material name="white"/>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.075"/>
+      <mass value="5"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+  <!-- arm1 joint & link -->
+  <joint name="joint1" type="revolute">
+    <parent link="base_link"/>
+    <child link="link1"/>
+    <origin xyz= "0 0 0.0706" rpy = "0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="30" lower="-2.88" upper="2.88" velocity="1.5"/>
+  </joint>
+
+  <link name="link1">
+    <collision>
+      <origin xyz = "0.0 0 0 " rpy = " 0 0 0"/>
+      <geometry>
+          <mesh filename="package://mycobot_description/meshes/stl/visual/link2.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz = "0.0 0 0 " rpy = " 0 0 0"/>
+      <geometry>
+          <mesh filename="package://mycobot_description/meshes/stl/visual/link2.stl" />
+      </geometry>
+      <material name="white"/>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.075"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <!-- arm2 joint & link -->
+  <joint name="joint2" type="revolute">
+    <parent link="link1"/>
+    <child link="link2"/>
+    <origin xyz= "0.03256 0  0.05976" rpy = "0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="30" lower="-2.88" upper="2.88" velocity="1.5"/>
+  </joint>
+
+  <link name="link2">
+    <collision>
+      <origin xyz = "0.0 0 0 " rpy = " 0 0 0"/>
+      <geometry>
+          <mesh filename="package://mycobot_description/meshes/stl/visual/link3.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz = "0.0 0 0 " rpy = " 0 0 0"/>
+      <geometry>
+          <mesh filename="package://mycobot_description/meshes/stl/visual/link3.stl" />
+      </geometry>
+      <material name="white"/>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.06"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <!-- arm3 joint & link -->
+  <joint name="joint3" type="revolute">
+    <parent link="link2"/>
+    <child link="link3"/>
+    <origin xyz="0.00272 0 0.1104" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="30" lower="-2.88" upper="2.88" velocity="1.5"/>
+  </joint>
+
+  <link name="link3">
+    <collision>
+      <origin xyz = "0.0 0 0" rpy = "0 0 0"/>
+      <geometry>
+          <mesh filename="package://mycobot_description/meshes/stl/visual/link4.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz = "0.0 0 0" rpy = "0 0 0"/>
+      <geometry>
+          <mesh filename="package://mycobot_description/meshes/stl/visual/link4.stl" />
+      </geometry>
+      <material name="white"/>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.06"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <!-- arm4 joint & link -->
+  <joint name="joint4" type="revolute">
+    <parent link="link3"/>
+    <child link="link4"/>
+    <origin xyz= "-0.00164 0 0.096" rpy = "0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort = "1000.0" lower = "-2.88" upper = "2.88" velocity = "0"/>
+  </joint>
+
+  <link name="link4">
+    <collision>
+      <origin xyz="0.0 0 0" rpy="0 0 0"/>
+      <geometry>
+          <mesh filename="package://mycobot_description/meshes/stl/visual/link5.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.0 0 0" rpy="0 0 0"/>
+      <geometry>
+          <mesh filename="package://mycobot_description/meshes/stl/visual/link5.stl" />
+      </geometry>
+      <material name="white"/>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.06"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <!-- arm5 joint & link -->
+  <joint name="joint5" type="revolute">
+    <parent link="link4"/>
+    <child link="link5"/>
+    <origin xyz= "0.0288 0 0.02976" rpy = "0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="30" lower="-2.88" upper="2.88" velocity="1.5"/>
+  </joint>
+
+  <link name="link5">
+    <collision>
+      <origin xyz="0.0 0 0" rpy="0 0 0"/>
+      <geometry>
+          <mesh filename="package://mycobot_description/meshes/stl/visual/link6.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.0 0 0" rpy="0 0 0"/>
+      <geometry>
+          <mesh filename="package://mycobot_description/meshes/stl/visual/link6.stl" />
+      </geometry>
+      <material name="white"/>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.06"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <!-- arm6 joint & link -->
+  <joint name="joint6" type="revolute">
+    <parent link="link5"/>
+    <child link="link6"/>
+    <origin xyz="0 0.0456 0.03792" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="30" lower="-3.05" upper="3.05" velocity="1.5"/>
+  </joint>
+
+  <link name="link6">
+    <collision>
+      <origin xyz="0.0 0 0" rpy="1.57075 0 0"/>
+      <geometry>
+        <cylinder length="0.005" radius="0.02"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.0 0 0" rpy="1.57075 0 0"/>
+      <geometry>
+        <cylinder length="0.005" radius="0.02"/>
+      </geometry>
+      <material name="green"/>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.06"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+
+</robot>
